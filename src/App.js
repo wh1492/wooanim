@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+
+import Header from './components/common/Header'
 import Homepage from './components/Homepage'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
@@ -13,6 +15,7 @@ class App extends Component {
     return(
       <Router>
         <Fragment>
+          <Header />
           <Route exact path="/" component={Homepage} />
           <Route exact path="/product" component={Products} />
           <Route exact path="/product/:slug" component={ProductPage} />

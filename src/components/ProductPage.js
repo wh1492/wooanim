@@ -40,7 +40,6 @@ export class ProductPage extends Component {
                             <div  className="product-detail--info" dangerouslySetInnerHTML={{__html: product.content.rendered}} />
                             <br/>
                             <Link className="btn go-back" to="/">Go Back</Link>
-                     
                     </div>
                 </Fragment>
             )
