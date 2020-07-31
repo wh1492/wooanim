@@ -40,6 +40,10 @@
 }
 */
 
+.product-container {
+    max-width: 960px;
+}
+
 .product-item {
     /* background-color: #ededed; */
     background-color: #e9e9e9;
