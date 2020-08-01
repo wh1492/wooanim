@@ -19,6 +19,7 @@ export class Dashboard extends Component {
         event.preventDefault();
         localStorage.removeItem('token')
         this.setState({
+            username: '',
             loggedIn: false
         })
     }

@@ -57,7 +57,7 @@ export class Login extends Component {
                     //  console.log(err.message)
                     // Error
                     if (err.response) {
-                        console.log('soim')
+                       // console.log('soim')
                         console.log(err.response.data);
                         console.log(err.response.data.message);
                         this.setState({
@@ -124,7 +124,8 @@ export class Login extends Component {
                             </div>
 
                             <div className="mb-6">
-                                <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
+                                <label htmlFor="password" 
+                                className="block text-gray-700 text-sm font-bold mb-2">
                                     Password:
                                     </label>
                                 <input

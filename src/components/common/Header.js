@@ -13,6 +13,7 @@ export class Header extends Component {
                 <div className="side">
                     <Link to="/product">Productos</Link>
                     <Link to="/login">Login</Link>
+                    <Link to="/dashboard/createpost">Crear Post</Link>
                 </div>
             </div>
         )
