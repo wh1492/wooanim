@@ -22,26 +22,25 @@ export class CreatePost extends Component {
         }
     }
 
-
-
     handleOnChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
-        console.log(event.target.name + ': ' + event.target.value)
+       // console.log(event.target.name + ': ' + event.target.value)
     };
-
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(localStorage.getItem('token'))
+        // console.log(localStorage.getItem('token'))
 
         const postData = {
             title: this.state.title,
             content: this.state.content,
-            status: this.state.status
+           // status: this.state.status
+            status: 'publish'
         }
 
-        console.log('postData');
-        console.log(postData);
+        // console.log('postData');
+        // console.log(postData);
+        
         const config = {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -123,7 +122,7 @@ export class CreatePost extends Component {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="status">
@@ -140,7 +139,7 @@ export class CreatePost extends Component {
                                 <option value="pending">Pending</option>
                                 <option value="publish">Publish</option>
                             </select>
-                        </div>
+                        </div> */}
 
                         <div className="flex items-center justify-between">
                             <button

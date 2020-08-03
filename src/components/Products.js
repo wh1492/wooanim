@@ -21,14 +21,9 @@ export class Products extends Component {
     }
 
     componentDidMount(){
-        // axios.get('/wp-json/wp/v2/product?_embed')
-        // .then(res => this.setState({
-        //     products: res.data,
-        //     isLoaded: true
-        // }))
-        // .catch(err => console.log(err));
-        const getProducts = axios.get('/wp-json/wp/v2/product?_embed');
-        const getIntro = axios.get('/wp-json/wp/v2/pages?slug=shop');
+        
+        const getProducts = axios.get('https://wpwoo.acbn.xyz/wp-json/wp/v2/product?_embed');
+        const getIntro = axios.get('https://wpwoo.acbn.xyz/wp-json/wp/v2/pages?slug=shop');
 
         Promise.all([ getProducts, getIntro ]).then(res => {
             // console.log(res)
@@ -47,10 +42,9 @@ export class Products extends Component {
     render() {
         AOS.init();
 
-        
         const {products, page, isLoaded} = this.state;
         if(isLoaded) {
-            console.log('isLoaded: ' + isLoaded)
+            // console.log('isLoaded: ' + isLoaded)
             // console.log(this.state)
             // console.log(this.state.products.length)
             

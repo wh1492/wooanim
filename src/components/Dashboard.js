@@ -15,7 +15,7 @@ export class Dashboard extends Component {
             token: ''
         }
     }
-    onFormSubmit = (event) => {
+    closeSession = (event) => {
         event.preventDefault();
         localStorage.removeItem('token')
         this.setState({
@@ -35,14 +35,10 @@ export class Dashboard extends Component {
                     <h2>Dashboard</h2>
                     <h1>Welcome {userName}!</h1>
                     <h1>Welcome {this.props.userName}!</h1>
-    
-    
+
                     <br/>
                     <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <form onSubmit={ this.onFormSubmit }>
+                    <form onSubmit={ this.closeSession }>
                     <button type="submit"> close sesion</button>
                     </form>
                 </div>

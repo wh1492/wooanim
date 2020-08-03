@@ -9,6 +9,7 @@ export class Login extends Component {
         super(props);
         this.state = {
             username: '',
+            userID: '',
             password: '',
             userNiceName: '',
             userEmail: '',
@@ -31,9 +32,9 @@ export class Login extends Component {
         this.setState({
             loading: true
         }, () => {
-            axios.post('https://wpwoo.acbn.xyz/wp-json/jwt-auth/v1/token', loginData)
+            axios.post('/wp-json/jwt-auth/v1/token', loginData)
                 .then(res => {
-                   // console.log(res.data)
+                    console.log(res.data)
                     if (undefined == res.data.token) {
                         this.setState({
                             error: res.data.message,
@@ -44,7 +45,7 @@ export class Login extends Component {
 
                     localStorage.setItem('token', res.data.token)
                     localStorage.setItem('userName', res.data.user_nicename)
-
+                    
                     this.setState({
                         loading: false,
                         token: res.data.token,
@@ -93,7 +94,7 @@ export class Login extends Component {
 
         const { username, password, loggedIn, userNiceName, messageError } = this.state;
         const user = userNiceName ? userNiceName : localStorage.getItem('userName');
-        // console.log('user: ' + user)
+        console.log('user: ' + user)
 
         if (loggedIn || localStorage.getItem('token')) {
             return <Redirect to={`/dashboard/${user}`} noThrow />

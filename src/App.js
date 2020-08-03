@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Products from './components/Products'
 import ProductPage from './components/ProductPage'
+import ListMyPosts from './components/admin/ListMyPosts'
 import CreatePost from './components/admin/CreatePost'
 // import logo from './logo.svg';
 
@@ -24,6 +25,7 @@ class App extends Component {
           <Route exact path="/product/:slug" component={ProductPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/dashboard/:userName" component={Dashboard} />
+          <Route exact path="/dashboard/myposts" component={ListMyPosts} />
           <Route exact path="/dashboard/createpost" component={CreatePost} />
         </Fragment>
       </Router>

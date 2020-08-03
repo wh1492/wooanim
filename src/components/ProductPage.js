@@ -15,7 +15,7 @@ export class ProductPage extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/wp-json/wp/v2/product/?slug=${this.props.match.params.slug}&_embed`)
+        axios.get(`https://wpwoo.acbn.xyz/wp-json/wp/v2/product/?slug=${this.props.match.params.slug}&_embed`)
         .then(res => this.setState({
             product: res.data[0],
             imageURL: res.data[0]._embedded['wp:featuredmedia'][0].media_details.sizes["full"].source_url,

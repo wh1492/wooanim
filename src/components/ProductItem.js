@@ -22,7 +22,7 @@ export class ProductItem extends Component {
         
         const { featured_media } = this.props.product;
      //   const { featured_media, author } = this.props.product;
-        const getImageUrl = axios.get(`/wp-json/wp/v2/media/${featured_media}`);
+        const getImageUrl = axios.get(`https://wpwoo.acbn.xyz/wp-json/wp/v2/media/${featured_media}`);
         // const getAuthor = axios.get(`/wp-json/wp/v2/users/${author}`);
       //  const getAuthor = axios.get(`/wp-json/wp/v2/users/1`);
 
