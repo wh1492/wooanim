@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Loading from '../common/Loading';
 
-import '../../tailwind.output.css';
 
 
 export class CreatePost extends Component {

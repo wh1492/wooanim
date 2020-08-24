@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router,  Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // import ProductItem from './ProductItem';
@@ -7,7 +7,7 @@ import axios from 'axios';
 import Loading from './common/Loading';
 
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 
 
 import './Products.css';
@@ -20,12 +20,12 @@ export class Products extends Component {
         isLoaded: false
     }
 
-    componentDidMount(){
-        
+    componentDidMount() {
+
         const getProducts = axios.get('https://wpwoo.acbn.xyz/wp-json/wp/v2/product?_embed');
         const getIntro = axios.get('https://wpwoo.acbn.xyz/wp-json/wp/v2/pages?slug=shop');
 
-        Promise.all([ getProducts, getIntro ]).then(res => {
+        Promise.all([getProducts, getIntro]).then(res => {
             // console.log(res)
             this.setState({
                 products: res[0].data,
@@ -34,54 +34,58 @@ export class Products extends Component {
             })
         });
     }
-    
-    createMarkup(html){
-        return {__html: html}
+
+    createMarkup(html) {
+        return { __html: html }
     }
 
     render() {
         AOS.init();
 
-        const {products, page, isLoaded} = this.state;
-        if(isLoaded) {
+        const { products, page, isLoaded } = this.state;
+        if (isLoaded) {
             // console.log('isLoaded: ' + isLoaded)
             // console.log(this.state)
             // console.log(this.state.products.length)
-            
+            //  console.log(this.state.products)
+
             return (
                 <div>
                     <header className="product-header" dangerouslySetInnerHTML={this.createMarkup(page.content.rendered)}>
-                    
+
                     </header>
-                    
+
                     <div className="container product-container">
-                        { products.map((product, index) => (
-                            <section  className="product-item" data-aos={index> 0 ? 'fade-in': ''} data-duration={index> 0 ? '1500': ''} key={product.id}>
+                        {products.map((product, index) => (
+                            <section className="product-item" data-aos={index > 0 ? 'fade-in' : ''} data-duration={index > 0 ? '1500' : ''} key={product.id}>
                                 <Link to={`/product/${product.slug}`}>
                                     <figure className="product-imagen">
-                                        {/* <img src={ product._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url } alt={product.title.rendered}/> */}
-                                        <img src={ product._embedded['wp:featuredmedia'][0].source_url } alt={product.title.rendered}/>
+                                        {product._embedded ? (
+                                            <img src={product._embedded['wp:featuredmedia'][0].source_url} alt={product.title.rendered} />
+                                        ) : (
+                                                <img src="https://placehold.it/450x450" alt={product.title.rendered} />
+                                            )}
                                     </figure>
                                 </Link>
-                                
+
                                 <div className="product-info">
                                     <h2><Link to={`/product/${product.slug}`}>{product.title.rendered}</Link></h2>
                                     <div dangerouslySetInnerHTML={this.createMarkup(product.excerpt.rendered)}></div>
-                                
+
                                     {/* <a className="btn" href="#">Buy</a> */}
                                     <Link to={`/product/${product.slug}`} className="btn">Ver Detalle</Link>
                                 </div>
                             </section>
                         ))}
                     </div>
-                    
+
                 </div>
             )
         }
 
         return (
             <Loading />
-        ) 
+        )
     }
 }
 

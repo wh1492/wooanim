@@ -1,10 +1,17 @@
-import React, { Component } from 'react'
-import {  Redirect} from 'react-router-dom';
+import React, { Component, Fragment } from 'react'
+import { Redirect } from 'react-router-dom';
+
+
+import Sidebar from './common/Sidebar'
+
+
+// import '../tailwind.output.css';
+// import '../tailwind.output.css';
 
 export class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state= {
+        this.state = {
             username: '',
             password: '',
             userNiceName: '',
@@ -18,6 +25,7 @@ export class Dashboard extends Component {
     closeSession = (event) => {
         event.preventDefault();
         localStorage.removeItem('token')
+        localStorage.removeItem('userName')
         this.setState({
             username: '',
             loggedIn: false
@@ -25,26 +33,34 @@ export class Dashboard extends Component {
     }
 
     render() {
-        const { username, password, loggedIn , userNiceName} = this.state;
+        const { username, password, loggedIn, userNiceName } = this.state;
         const userName = localStorage.getItem('userName');
-        if(!loggedIn || !localStorage.getItem('token')) {
+        if (!loggedIn || !localStorage.getItem('token')) {
             return <Redirect to='/' noThrow />
         } else {
             return (
-                <div>
-                    <h2>Dashboard</h2>
-                    <h1>Welcome {userName}!</h1>
-                    <h1>Welcome {this.props.userName}!</h1>
+                <div className="hold-transition sidebar-mini layout-fixed">
+                <div className="wrapper">
 
-                    <br/>
-                    <br/>
-                    <form onSubmit={ this.closeSession }>
-                    <button type="submit"> close sesion</button>
-                    </form>
+                    <Sidebar />
+
+                    <aside className="main-sidebar sidebar-dark-primary elevation-4">
+                        <h2>Dashboard</h2>
+                        <h1>Welcome {userName}!</h1>
+                        <h1>Welcome {this.props.userName}!</h1>
+
+                        <br />
+                        <br />
+                        <form onSubmit={this.closeSession}>
+                            <button type="submit"> close sesion</button>
+                        </form>
+                    </aside>
+
+                </div>
                 </div>
             )
         }
-        
+
     }
 }
 

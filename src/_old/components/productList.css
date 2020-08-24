@@ -70,6 +70,7 @@
 
 .product-imagen {
     position: relative;
+    margin: 0;
 }
 
 .product-imagen img {
