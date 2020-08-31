@@ -2,7 +2,7 @@
  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
  /**/
  
- @import "./css/adminlite.min.css";
+ // @import "./css/adminlite.min.css";
  // @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
  /**/
  
@@ -31,6 +31,16 @@
  
  .loading .App-loader {
      margin-bottom: 2rem;
+ }
+ 
+ figure {
+     &.aligncenter {
+         text-align: center;
+         img {
+             margin-left: auto;
+             margin-right: auto;
+         }
+     }
  }
  /*
 :root {
@@ -132,4 +142,17 @@ h6,
  
  .account-link:hover {
      background: #3d68ff;
+ }
+ /* ADMIN */
+ 
+ .login {
+     background: url(./images/login-new.jpeg);
+ }
+ 
+ .border-side-nav {
+     border-color: #ECF0F1;
+ }
+ 
+ .bg-side-nav {
+     background-color: #ECF0F1;
  }

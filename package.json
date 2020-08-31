@@ -14,13 +14,14 @@
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
         "react-scripts": "3.4.1",
-        "tailwindcss": "^1.6.2"
+        "tailwindcss": "^1.7.3"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
+        "start": "npm run build:css && react-scripts start",
+        "build": "npm run build:css && react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -37,5 +38,9 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "https://wpwoo.acbn.xyz"
+    "proxy": "https://wpwoo.acbn.xyz",
+    "devDependencies": {
+        "autoprefixer": "^9.8.6",
+        "postcss-cli": "^7.1.1"
+    }
 }

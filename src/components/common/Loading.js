@@ -5,10 +5,10 @@ export class Loading extends Component {
     render() {
         return (
             <div className="loading">
-                <div className="container">
+                {/* <div className="container"> */}
                 <img src={loader} className="App-loader" alt="logo" />
                     <h3>Loading...</h3>
-                </div>
+                {/* </div> */}
             </div>
         )
     }

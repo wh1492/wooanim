@@ -6,7 +6,9 @@ import Loading from './common/Loading';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import '../styles/main.css';
 
+import './Homepage.scss'
 
 export class Homepage extends Component {
     state = {
@@ -35,7 +37,9 @@ export class Homepage extends Component {
         // console.log(page)
         if (isLoaded) {
             return (
-                <div data-aos="fade-in" data-duration="1500" dangerouslySetInnerHTML={this.createMarkup(page.content.rendered)}></div>
+                <div className="container mx-auto pt-12">
+                    <div className="home-content" data-aos="fade-in" data-duration="1500" dangerouslySetInnerHTML={this.createMarkup(page.content.rendered)}></div>
+                </div>
             )
         }
         return (
